@@ -28,18 +28,6 @@ exports.handler = async(event, context, cb) => {
       return {
         id, name, price, image: url, featured, colors, company, description, category, shipping,
       };
-      // return {
-      //   id,
-      //   name,
-      //   featured,
-      //   price,
-      //   colors,
-      //   company,
-      //   description,
-      //   category,
-      //   shipping,
-      //   image: url,
-      // };
     });
 
     return {

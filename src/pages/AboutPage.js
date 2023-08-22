@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { PageHero } from '../components'
-import matchaRGB from '../assets/matcha-RGB.jpg'
+import matchaRGB from '../pictures/matcha-RGB.jpg'
 const AboutPage = () => {
   return (
     <main>
