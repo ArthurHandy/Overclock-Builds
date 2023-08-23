@@ -34,7 +34,7 @@ const Filters = () => {
               type='text'
               name='text'
               value={text}
-              placeholder='search'
+              placeholder='search...'
               onChange={updateFilters}
               className='search-input'
             />
@@ -65,20 +65,23 @@ const Filters = () => {
           {/* company */}
           <div className='form-control'>
             <h5>company</h5>
-            <select
-              name='company'
-              value={company}
-              onChange={updateFilters}
-              className='company'
-            >
+            <div>
               {companies.map((c, index) => {
                 return (
-                  <option key={index} value={c}>
+                  <button
+                    key={index}
+                    onClick={updateFilters}
+                    type='button'
+                    name='company'
+                    className={`${
+                      category === c.toLowerCase() ? 'active' : null
+                    }`}
+                  >
                     {c}
-                  </option>
+                  </button>
                 )
               })}
-            </select>
+            </div>
           </div>
           {/* end of company */}
           {/* colors */}
@@ -161,38 +164,53 @@ const Wrapper = styled.section`
       margin-bottom: 0.5rem;
     }
   }
+
   .search-input {
-    padding: 0.5rem;
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
+    width: 100%;
+    height: 30px;
+    position: relative;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid var(--clr-primary-5);
+    font-size: 14px;
+    text-transform: capitalize;
     letter-spacing: var(--spacing);
   }
-  .search-input::placeholder {
-    text-transform: capitalize;
+
+  .search-input:focus {
+    outline: none;
+    border: 0.5px solid var(--clr-primary-5);
+    box-shadow: -5px -5px 0px var(--clr-primary-9);
   }
 
   button {
     display: block;
-    margin: 0.25em 0;
-    padding: 0.25rem 0;
-    text-transform: capitalize;
-    background: transparent;
+    color: var(--clr-grey-1);
+    text-decoration: none;
+    font-size: 14px;
     border: none;
-    border-bottom: 1px solid transparent;
-    letter-spacing: var(--spacing);
-    color: var(--clr-grey-5);
-    cursor: pointer;
+    background: none;
+    font-weight: 50;
+    padding: 10px;
   }
-  .active {
-    border-color: var(--clr-grey-5);
+
+  button::before {
+    margin-left: auto;
   }
-  .company {
-    background: var(--clr-grey-10);
-    border-radius: var(--radius);
-    border-color: transparent;
-    padding: 0.25rem;
+
+  button::after, button::before {
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: var(--clr-primary-5);
+    display: block;
+    transition: 0.5s;
   }
+  
+  button:hover::after, button:hover::before {
+    width: 100%;
+  }
+
   .colors {
     display: flex;
     align-items: center;
@@ -231,6 +249,7 @@ const Wrapper = styled.section`
   .price {
     margin-bottom: 0.25rem;
   }
+  
   .shipping {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -239,17 +258,44 @@ const Wrapper = styled.section`
     column-gap: 0.5rem;
     font-size: 1rem;
   }
+ 
   .clear-btn {
-    background: var(--clr-red-dark);
-    color: var(--clr-white);
-    padding: 0.25rem 0.5rem;
-    border-radius: var(--radius);
+    padding: 2px 10px;
+    border: unset;
+    border-radius: 15px;
+    color: var(--clr-grey-1);
+    z-index: 1;
+    background: var(--clr-primary-1);
+    position: relative;
+    font-weight: 1000;
+    font-size: 12px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
   }
-  @media (min-width: 768px) {
-    .content {
-      position: sticky;
-      top: 1rem;
-    }
+
+  .clear-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 15px;
+    background-color: var(--clr-primary-5);
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+  }
+
+  .clear-btn:hover {
+    color: var(--clr-grey-10);
+  }
+
+  .clear-btn:hover::before {
+    width: 100%;
   }
 `
 

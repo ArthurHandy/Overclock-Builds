@@ -73,6 +73,7 @@ const Wrapper = styled.section`
   .submit-btn:hover {
     color: var(--clr-white);
   }
+
   @media (min-width: 992px) {
     .content {
       display: grid;

@@ -13,7 +13,7 @@ const Footer = () => {
 }
 
 const Container = styled.footer`
-  height: 5rem;
+  height: 7rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

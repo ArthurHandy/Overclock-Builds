@@ -32,11 +32,11 @@ Variables
   --clr-grey-10: #f8fafc;
   --clr-white: #fff;
   --clr-black: #222;
+  --clr-red-dark: #FF0000;
   --transition: all 0.3s linear;
   --spacing: 0.1rem;
   --radius: 0.25rem;
-  /*--max-width: 1170px;*/
-  --max-width: 1700px;
+  --max-width: 1800px;
   --fixed-width: 620px;
 }
 /*
